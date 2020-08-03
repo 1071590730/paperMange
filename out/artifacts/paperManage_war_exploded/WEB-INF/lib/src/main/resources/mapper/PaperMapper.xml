@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hqyj.www.dao.PaperMapper" >
+  <resultMap id="BaseResultMap" type="com.hqyj.www.pojo.Paper" >
+    <id column="paper_id" property="paperId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="paperUrl" property="paperurl" jdbcType="VARCHAR" />
+    <result column="departReview" property="departreview" jdbcType="VARCHAR" />
+    <result column="schoolReview" property="schoolreview" jdbcType="VARCHAR" />
+    <result column="uploadTime" property="uploadtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hqyj.www.pojo.Paper" extends="BaseResultMap" >
+    <result column="paperPro" property="paperpro" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    paper_id, user_id, paperUrl, departReview, schoolReview, uploadTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    paperPro
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from paper
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paper
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hqyj.www.pojo.Paper" >
+    insert into paper (paper_id, user_id, paperUrl, 
+      departReview, schoolReview, uploadTime, 
+      paperPro)
+    values (#{paperId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{paperurl,jdbcType=VARCHAR}, 
+      #{departreview,jdbcType=VARCHAR}, #{schoolreview,jdbcType=VARCHAR}, #{uploadtime,jdbcType=TIMESTAMP}, 
+      #{paperpro,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hqyj.www.pojo.Paper" >
+    insert into paper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paperId != null" >
+        paper_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="paperurl != null" >
+        paperUrl,
+      </if>
+      <if test="departreview != null" >
+        departReview,
+      </if>
+      <if test="schoolreview != null" >
+        schoolReview,
+      </if>
+      <if test="uploadtime != null" >
+        uploadTime,
+      </if>
+      <if test="paperpro != null" >
+        paperPro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paperId != null" >
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="paperurl != null" >
+        #{paperurl,jdbcType=VARCHAR},
+      </if>
+      <if test="departreview != null" >
+        #{departreview,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolreview != null" >
+        #{schoolreview,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null" >
+        #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paperpro != null" >
+        #{paperpro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hqyj.www.pojo.Paper" >
+    update paper
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="paperurl != null" >
+        paperUrl = #{paperurl,jdbcType=VARCHAR},
+      </if>
+      <if test="departreview != null" >
+        departReview = #{departreview,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolreview != null" >
+        schoolReview = #{schoolreview,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null" >
+        uploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paperpro != null" >
+        paperPro = #{paperpro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hqyj.www.pojo.Paper" >
+    update paper
+    set user_id = #{userId,jdbcType=INTEGER},
+      paperUrl = #{paperurl,jdbcType=VARCHAR},
+      departReview = #{departreview,jdbcType=VARCHAR},
+      schoolReview = #{schoolreview,jdbcType=VARCHAR},
+      uploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      paperPro = #{paperpro,jdbcType=LONGVARCHAR}
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hqyj.www.pojo.Paper" >
+    update paper
+    set user_id = #{userId,jdbcType=INTEGER},
+      paperUrl = #{paperurl,jdbcType=VARCHAR},
+      departReview = #{departreview,jdbcType=VARCHAR},
+      schoolReview = #{schoolreview,jdbcType=VARCHAR},
+      uploadTime = #{uploadtime,jdbcType=TIMESTAMP}
+    where paper_id = #{paperId,jdbcType=INTEGER}
+  </update>
+</mapper>
