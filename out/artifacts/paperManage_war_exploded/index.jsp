@@ -181,8 +181,10 @@
 						class="iconfont nav_right">&#xe697;</i>
 				</a>
 					<ul class="sub-menu">
-						<li><a _href="view/porchase/quary_bill.jsp"> <i class="iconfont">&#xe6a7;</i> <cite class="item5">我的申报结果</cite>
+						<li><a _href="view/myPaperDeclare.jsp"> <i class="iconfont">&#xe6a7;</i> <cite class="item5">我的申报结果</cite>
 						</a></li>
+<%--                        <li><a _href="student/queryPaperById.ajax"> <i class="iconfont">&#xe6a7;</i> <cite class="item5">我的申报结果</cite>--%>
+<%--                        </a></li>--%>
 						<li><a _href="view/alluser.jsp"> <i class="iconfont">&#xe6a7;</i> <cite class="item5">1</cite></a></li>
 						<li><a _href="view/allUsers_list.jsp"> <i class="iconfont">&#xe6a7;</i> <cite class="item5">2</cite></a></li>
 						<li><a _href="view/allUsersArchives_list.jsp"><i class="iconfont">&#xe6a7;</i> <cite class="item5">2</cite></a></li>

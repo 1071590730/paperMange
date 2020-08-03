@@ -8,6 +8,13 @@
     <result column="departReview" property="departreview" jdbcType="VARCHAR" />
     <result column="schoolReview" property="schoolreview" jdbcType="VARCHAR" />
     <result column="uploadTime" property="uploadtime" jdbcType="TIMESTAMP" />
+
+    <!--配置一对一关系的映射-->
+<!--    <association property="user" javaType="com.hqyj.www.pojo.User">-->
+<!--      <id column="user_id" property="id" jdbcType="INTEGER" />-->
+<!--      <result column="name" property="name" jdbcType="VARCHAR" />-->
+<!--    </association>-->
+
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hqyj.www.pojo.Paper" extends="BaseResultMap" >
     <result column="paperPro" property="paperpro" jdbcType="LONGVARCHAR" />
@@ -130,4 +137,16 @@
       uploadTime = #{uploadtime,jdbcType=TIMESTAMP}
     where paper_id = #{paperId,jdbcType=INTEGER}
   </update>
+
+<!--  自己写的方法-->
+<!--  <select id="queryPaperByUserName" resultMap="ResultMapWithBLOBs" parameterType="com.hqyj.www.pojo.Paper" >-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    ,-->
+<!--    <include refid="Blob_Column_List" />-->
+<!--    from paper-->
+<!--    left join user on paper.user_id = user.id-->
+<!--&#45;&#45;     where paper_id = #{paperId,jdbcType=INTEGER}-->
+<!--    where user.name = #{name,jdbcType=VARCHAR}-->
+<!--  </select>-->
 </mapper>

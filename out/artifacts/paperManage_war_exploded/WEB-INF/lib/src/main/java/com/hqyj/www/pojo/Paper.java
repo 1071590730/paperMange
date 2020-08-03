@@ -1,5 +1,7 @@
 package com.hqyj.www.pojo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Paper {
@@ -57,12 +59,25 @@ public class Paper {
         this.schoolreview = schoolreview;
     }
 
-    public Date getUploadtime() {
-        return uploadtime;
+//    public Date getUploadtime() {
+//        return uploadtime;
+//    }
+//
+//    public void setUploadtime(Date uploadtime) {
+//        this.uploadtime = uploadtime;
+//    }
+
+    public String getUploadtime() {
+        if(uploadtime!=null){
+            SimpleDateFormat sm = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+            return sm.format(uploadtime);
+        }
+        return "";
     }
 
-    public void setUploadtime(Date uploadtime) {
-        this.uploadtime = uploadtime;
+    public void setUploadtime(String lastlogintime) throws ParseException {
+        SimpleDateFormat sm = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        this.uploadtime = sm.parse(lastlogintime);
     }
 
     public String getPaperpro() {
@@ -72,4 +87,16 @@ public class Paper {
     public void setPaperpro(String paperpro) {
         this.paperpro = paperpro;
     }
+
+//    自己加的
+
+//    private User user;
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

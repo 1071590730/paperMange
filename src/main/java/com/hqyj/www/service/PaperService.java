@@ -2,6 +2,9 @@ package com.hqyj.www.service;
 
 import com.hqyj.www.pojo.Paper;
 
+import java.util.HashMap;
+
 public interface PaperService {
-    Paper queryPaperById(int id);
+    Paper queryPaperByUserName(String name);
+
 }
